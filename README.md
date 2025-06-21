@@ -7,4 +7,4 @@ I'm just trying and learning
 
 ## 📱 SocialMedia
 [![TikTok](https://img.shields.io/badge/TikTok-000000?style=flat&logo=tikTok&logoColor=white)](https://www.tiktok.com/@wh0_4m._1)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/wh0_4m1)
+[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/wh0am1i_kli)
