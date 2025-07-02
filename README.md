@@ -3,7 +3,7 @@
 I'm just trying and learning 
 
 ## 📊 GitHub Stats
-![F0olN3t's GitHub stats](https://github-readme-stats.vercel.app/api?username=F0olN3t &show_icons=true&theme=dark)
+![f0oln3t's GitHub stats](https://github-readme-stats.vercel.app/api?username=F0olN3t &show_icons=true&theme=dark)
 
 ## 📱 SocialMedia
 [![TikTok](https://img.shields.io/badge/TikTok-000000?style=flat&logo=tikTok&logoColor=white)](https://www.tiktok.com/@f0ol.n3t_)
