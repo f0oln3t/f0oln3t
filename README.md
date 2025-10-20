@@ -1,6 +1,6 @@
 <div align="center">
-    <a href="https://youtube.com/c/Fathan_mc1">
-        <img src="https://readme-typing-svg.herokuapp.com?font=ShadowsIntoLightsize=50&duration=5500&color=f70787&background=FF673200&center=true&vCenter=true&lines=Hello Friends;I+am+F0olN3t;Welcome+to+my+GitHub+😁" alt="Typing SVG" />
+    <a href="https://www.tiktok.com/@f0ol.n3t_">
+        <img src="https://readme-typing-svg.herokuapp.com?font=ShadowsIntoLightsize=50&duration=5500&color=f70787&background=FF673200&center=true&vCenter=true&lines=Hello Friends,+I+am+F0olN3t;Welcome+to+my+GitHub+Profile+😊" alt="Typing SVG" />
     </a>
 </div>
 
