@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://www.tiktok.com/@f0ol.n3t_">
-        <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=200&size=50&pause=1000&center=true&width=535&height=100&lines=Hello+friend;I'm+F0oln3t;Welcome+to+my+github+profile" alt="Typing SVG" />
+        <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=200&size=50&pause=1000&center=true&width=535&height=100&lines=Hello+friend;I'm+F0oln3t;Welcome" alt="Typing SVG" />
     </a>
 </div>
 
