@@ -1,4 +1,7 @@
-# Hello Friend, I'm F0olN3t 👋
+<div align="center">
+        <img src="https://readme-typing-svg.herokuapp.com?font=ShadowsIntoLightsize=50&duration=5500&color=f70787&background=FF673200&center=true&vCenter=true&lines=Hello Friends,+I+am+F0oln3t;Welcome+to+my+GitHub+😁" alt="Typing SVG" />
+    </a>
+</div>
 
 I'm just trying and learning 
 
