@@ -8,6 +8,7 @@ I'm just trying and learning
 
 ## 📊 GitHub Stats
 ![f0oln3t's GitHub stats](https://github-readme-stats.vercel.app/api?username=f0oln3t&show_icons=true&theme=dark)
+<p align="center"><a href="https://github.com/f0oln3t"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=f0oln3t&theme=chartreuse-dark&layout=compact"></a></p>
 
 ## 📱 SocialMedia
 [![TikTok](https://img.shields.io/badge/TikTok-000000?style=flat&logo=tikTok&logoColor=white)](https://www.tiktok.com/@f0ol.n3t_)
