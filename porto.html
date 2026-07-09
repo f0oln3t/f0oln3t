@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Proyek | f0oln3t</title>
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.7); /* Transparan untuk blur */
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR DENGAN BLUR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 75px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px); /* Efek Blur */
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 7%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        #clock {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .menu-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            cursor: pointer;
+            color: var(--primary);
+            padding: 10px 15px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .menu-btn:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+        }
+
+        /* --- SIDEBAR --- */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100%;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+            padding: 100px 40px;
+        }
+
+        #sidebar.active {
+            right: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        #sidebar ul {
+            list-style: none;
+        }
+
+        #sidebar ul li {
+            margin-bottom: 30px;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        #sidebar.active ul li {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        #sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #sidebar ul li a i {
+            color: var(--primary);
+            width: 25px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 160px 7% 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 25px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 40px; /* Lengkungan modern ala iOS */
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* --- CONTAINER & CARDS --- */
+        .container {
+            padding: 60px 7%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg); /* Lengkungan Kotak Proyek */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: var(--text-dim);
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+
+        .contributors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-link {
+            background: #334155;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+        }
+
+        /* --- SOCIAL MEDIA --- */
+        .social-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-item {
+            background: var(--card-bg);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-item:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+            transform: scale(1.1) rotate(8deg);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+            nav { padding: 0 5%; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div id="clock">00.00.00</div>
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars-staggered fa-lg"></i>
+        </button>
+    </nav>
+
+    <div id="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        <ul>
+            <li><a href="#" onclick="toggleMenu()"><i class="fa-solid fa-house"></i> Beranda</a></li>
+            <li><a href="#projects" onclick="toggleMenu()"><i class="fa-solid fa-code"></i> Project</a></li>
+            <li><a href="#" onclick="toggleMenu()"><i class="fa-solid fa-user"></i> About</a></li>
+            <li><a href="#contact" onclick="toggleMenu()"><i class="fa-solid fa-share-nodes"></i> Social Media</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="avatar-container">
+            <img class="avatar" src="https://j.top4top.io/p_3682gg9vw0.jpg" alt="f0oln3t">
+        </div>
+        <h1>Hi, I'm f0oln3t</h1>
+        <p>Developer & Pentester yang fokus membangun solusi teknologi yang efisien. Silakan cek daftar proyek saya di bawah ini.</p>
+    </header>
+
+    <div class="container" id="projects">
+        <h2 class="section-title"><i class="fa-solid fa-rocket"></i> My Projects</h2>
+        <div id="projectGrid" class="grid">
+            <!-- Render via JS -->
+        </div>
+    </div>
+    
+    <div class="container" id="contact">
+        <h2 class="section-title"><i class="fa-solid fa-link"></i> Social Media</h2>
+        <div class="social-grid">
+            <a href="https://t.me/f0oln3t_bot" target="_blank" class="social-item">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+            <a href="https://github.com/f0oln3t" target="_blank" class="social-item">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:f0oln3t@proton.me" class="social-item">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // DATA JSON
+        const myProjects = [
+            {
+                nama: "APi.foolid",
+                desk: "Website berbagi APi scrape, snippet untuk berbagai bahasa pemrograman, dan tools untuk developer.",
+                contributor: ["f0oln3t"],
+                link: "https://api.foolid.my.id"
+            },
+        ];
+
+        // Toggle Sidebar
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        // Real-time Clock
+        function updateTime() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').innerText = `${h}.${m}.${s}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Render Cards
+        const grid = document.getElementById('projectGrid');
+        grid.innerHTML = myProjects.map(item => `
+            <div class="project-card">
+                <h3><i class="fa-solid fa-folder-open"></i> ${item.nama}</h3>
+                <p>${item.desk}</p>
+                <div class="contributors">
+                    ${item.contributor.map(c => `<span class="badge"><i class="fa-solid fa-user-tag" style="font-size:10px"></i> ${c}</span>`).join('')}
+                </div>
+                <a href="${item.link}" target="_blank" class="btn-link">
+                    <i class="fa-brands fa-github"></i> Lihat di GitHub
+                </a>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
