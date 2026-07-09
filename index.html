@@ -294,6 +294,51 @@
             transform: scale(1.1) rotate(8deg);
         }
 
+        /* --- SKILL BARS --- */
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-percent {
+            color: var(--primary);
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: #334155;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary), #818cf8);
+            border-radius: 10px;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-fill.animate {
+            /* width set by JS */
+        }
+
         @media (max-width: 600px) {
             header h1 { font-size: 2.2rem; }
             nav { padding: 0 5%; }
@@ -328,6 +373,57 @@
         <p>Developer & Pentester yang fokus membangun solusi teknologi yang efisien. Silakan cek daftar proyek saya di bawah ini.</p>
     </header>
 
+    <div class="container" id="skills">
+        <h2 class="section-title"><i class="fa-solid fa-code"></i> Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span>JavaScript</span>
+                    <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="85"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span>Python</span>
+                    <span class="skill-percent">75%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="75"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span>HTML</span>
+                    <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="90"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span>CSS</span>
+                    <span class="skill-percent">40%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="40"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span>PHP</span>
+                    <span class="skill-percent">20%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill" data-width="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="projects">
         <h2 class="section-title"><i class="fa-solid fa-rocket"></i> My Projects</h2>
         <div id="projectGrid" class="grid">
@@ -359,7 +455,14 @@
                 contributor: ["f0oln3t"],
                 link: "https://api.foolid.my.id"
             },
+            {
+                nama: "Website Jasa pembuatan web",
+                desk: "Website jasa pembuatan web | FoolID WebMaker",
+                contributor: ["f0oln3t"],
+                link: "https://www.foolid.my.id"
+            },
         ];
+        
 
         // Toggle Sidebar
         function toggleMenu() {
@@ -377,6 +480,21 @@
         setInterval(updateTime, 1000);
         updateTime();
 
+        // Skill Bar Animation on Scroll
+        function animateSkills() {
+            const fills = document.querySelectorAll('.skill-fill');
+            fills.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight - 50;
+                if (isVisible) {
+                    el.style.width = el.dataset.width + '%';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateSkills);
+        window.addEventListener('load', animateSkills);
+
         // Render Cards
         const grid = document.getElementById('projectGrid');
         grid.innerHTML = myProjects.map(item => `
@@ -387,7 +505,7 @@
                     ${item.contributor.map(c => `<span class="badge"><i class="fa-solid fa-user-tag" style="font-size:10px"></i> ${c}</span>`).join('')}
                 </div>
                 <a href="${item.link}" target="_blank" class="btn-link">
-                    <i class="fa-brands fa-github"></i> Lihat di GitHub
+                    <i class="fa-solid fa-eye"></i> Lihat Proyek
                 </a>
             </div>
         `).join('');
